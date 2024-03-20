@@ -1,0 +1,21 @@
+[package]
+name = "miden-formatting"
+description = "Versatile pretty-printing and display formatting utilities used by Miden"
+version.workspace = true
+edition.workspace = true
+authors.workspace = true
+repository.workspace = true
+categories.workspace = true
+keywords.workspace = true
+license-file.workspace = true
+readme.workspace = true
+
+[features]
+default = ["std"]
+std = []
+
+[dependencies]
+unicode-width = "0.1"
+
+[dev-dependencies]
+pretty_assertions = "1.0"
