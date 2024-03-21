@@ -39,26 +39,14 @@ impl<'a> Chunk<'a> {
     }
 
     fn flat(self, doc: &'a Document) -> Self {
-        Self {
-            doc,
-            indent: self.indent,
-            flat: true,
-        }
+        Self { doc, indent: self.indent, flat: true }
     }
 }
 
 impl<'a> PrettyPrinter<'a> {
     fn new(doc: &'a Document, width: usize) -> Self {
-        let chunk = Chunk {
-            doc,
-            indent: 0,
-            flat: false,
-        };
-        Self {
-            width,
-            col: 0,
-            chunks: vec![chunk],
-        }
+        let chunk = Chunk { doc, indent: 0, flat: false };
+        Self { width, col: 0, chunks: vec![chunk] }
     }
 
     fn print(&mut self, f: &mut fmt::Formatter) -> fmt::Result {
@@ -81,28 +69,28 @@ impl<'a> PrettyPrinter<'a> {
                         write!(f, "{1:0$}", chunk.indent as usize, "")?;
                         self.col = chunk.indent;
                     }
-                }
+                },
                 Document::Char(c, width) => {
                     f.write_char(*c)?;
                     self.col += width;
-                }
+                },
                 Document::Text(text, width) => {
                     f.write_str(text)?;
                     self.col += width;
-                }
+                },
                 Document::Flatten(x) => self.chunks.push(chunk.flat(x)),
                 Document::Indent(i, x) => self.chunks.push(chunk.indented(*i, x)),
                 Document::Concat(x, y) => {
                     self.chunks.push(chunk.with_doc(y));
                     self.chunks.push(chunk.with_doc(x));
-                }
+                },
                 Document::Choice(x, y) => {
                     if chunk.flat || self.fits(chunk.with_doc(x)) {
                         self.chunks.push(chunk.with_doc(x));
                     } else {
                         self.chunks.push(chunk.with_doc(y));
                     }
-                }
+                },
             }
         }
         Ok(())
@@ -127,7 +115,7 @@ impl<'a> PrettyPrinter<'a> {
                     Some((chunk, more_chunks)) => {
                         chunks = more_chunks;
                         *chunk
-                    }
+                    },
                 },
             };
 
@@ -139,13 +127,13 @@ impl<'a> PrettyPrinter<'a> {
                     } else {
                         return false;
                     }
-                }
+                },
                 Document::Flatten(x) => stack.push(chunk.flat(x)),
                 Document::Indent(i, x) => stack.push(chunk.indented(*i, x)),
                 Document::Concat(x, y) => {
                     stack.push(chunk.with_doc(y));
                     stack.push(chunk.with_doc(x));
-                }
+                },
                 Document::Choice(x, y) => {
                     if chunk.flat {
                         stack.push(chunk.with_doc(x));
@@ -154,7 +142,7 @@ impl<'a> PrettyPrinter<'a> {
                         // the first line of `y` is no longer than the first line of `x`.
                         stack.push(chunk.with_doc(y));
                     }
-                }
+                },
             }
         }
     }

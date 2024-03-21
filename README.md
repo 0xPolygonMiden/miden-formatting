@@ -1,9 +1,9 @@
 # `miden-formatting`
 
-[![LICENSE](https://github.com/0xPolygonMiden/miden-vm/blob/main/LICENSE)](https://img.shields.io/badge/license-MIT-blue.svg)
-[![RUST_VERSION]()](https://img.shields.io/badge/rustc-1.76+-lightgray.svg)
-[![CRATE](https://crates.io/crates/miden-formatting)](https://img.shields.io/crates/v/miden-formatting)
-[![CI](https://github.com/0xPolygonMiden/miden-formatting/workflows/CI/badge.svg?branch=main)](https://github.com/0xPolygonMiden/miden-formatting/actions?query=workflow%3A%22CI%22+branch%3Amain)
+[![LICENSE](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/0xPolygonMiden/miden-formatting/blob/main/LICENSE)
+[![RUST_VERSION](https://img.shields.io/badge/rustc-1.76+-lightgray.svg)]()
+[![CRATE](https://img.shields.io/crates/v/miden-formatting)](https://crates.io/crates/miden-formatting)
+[![CI](https://github.com/0xPolygonMiden/miden-formatting/actions/workflows/ci.yml/badge.svg)](https://github.com/0xPolygonMiden/miden-formatting/actions/workflows/ci.yml)
 
 This crate provides some general infrastructure for pretty-printers and value foramtting that is needed by various Miden crates. Rather than implement this
 stuff in every place where it is needed, we've extracted the most important and general bits and put them in this crate.

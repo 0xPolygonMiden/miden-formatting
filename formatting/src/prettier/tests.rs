@@ -1,5 +1,4 @@
 use alloc::{boxed::Box, rc::Rc, string::ToString, vec::Vec};
-use core::fmt;
 
 use pretty_assertions::assert_str_eq;
 

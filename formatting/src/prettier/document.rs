@@ -44,7 +44,7 @@ impl Document {
             Self::Empty => false,
             Self::Newline => true,
             Self::Char('\n' | '\r', _) => true,
-            Self::Char(_, _) => false,
+            Self::Char(..) => false,
             Self::Text(ref text, _) => text.starts_with(['\n', '\r']),
             Self::Flatten(doc) => doc.has_leading_newline(),
             Self::Indent(_, doc) => doc.has_leading_newline(),
@@ -96,7 +96,7 @@ pub fn character(c: char) -> Document {
         c => {
             let width = unicode_width::UnicodeWidthChar::width(c).unwrap_or(0) as u32;
             Document::Char(c, width)
-        }
+        },
     }
 }
 
@@ -114,7 +114,7 @@ pub fn text(s: impl ToString) -> Document {
             drop(chars);
             let width = unicode_width::UnicodeWidthStr::width(string.as_ref()) as u32;
             Document::Text(string, width)
-        }
+        },
     }
 }
 
@@ -129,7 +129,7 @@ pub fn const_text(s: &'static str) -> Document {
             let string = Cow::Borrowed(s);
             let width = unicode_width::UnicodeWidthStr::width(string.as_ref()) as u32;
             Document::Text(string, width)
-        }
+        },
     }
 }
 
@@ -330,7 +330,7 @@ impl fmt::Display for Document {
             doc => {
                 let width = f.width().unwrap_or(80);
                 super::print::pretty_print(doc, width, f)
-            }
+            },
         }
     }
 }

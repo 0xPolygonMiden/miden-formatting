@@ -12,10 +12,10 @@ mod print;
 #[cfg(test)]
 mod tests;
 
-pub use self::document::{concat, const_text, display, flatten, indent, nl, split, text, Document};
-
 use alloc::string::String;
 use core::fmt;
+
+pub use self::document::{concat, const_text, display, flatten, indent, nl, split, text, Document};
 
 /// The [PrettyPrint] trait is used as a building block for pretty printing data or syntax trees,
 /// as commonly seen in tools like Prettier.
