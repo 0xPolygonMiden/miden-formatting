@@ -2,12 +2,15 @@
 name = "miden-formatting"
 description = "Versatile pretty-printing and display formatting utilities used by Miden"
 version.workspace = true
+rust-version.workspace = true
 edition.workspace = true
 authors.workspace = true
+homepage.workspace = true
+documentation.workspace = true
 repository.workspace = true
 categories.workspace = true
 keywords.workspace = true
-license-file.workspace = true
+license.workspace = true
 readme.workspace = true
 
 [features]

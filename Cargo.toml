@@ -4,13 +4,14 @@ members = ["formatting"]
 
 [workspace.package]
 version = "0.1.0"
-authors = ["Miden Developers"]
+rust-version = "1.75"
+authors = ["Miden Contributors"]
 repository = "https://github.com/0xPolygonMiden/miden-formatting"
 homepage = "https://github.com/0xPolygonMiden/miden-formatting"
-documentation = "https://github.com/0xPolygonMiden/miden-formatting"
+documentation = "https://docs.rs/miden-formatting"
 categories = ["value-formatting"]
 keywords = ["pretty-print", "prettier", "miden"]
-license-file = "LICENSE"
+license = "MIT"
 readme = "README.md"
 edition = "2021"
 
